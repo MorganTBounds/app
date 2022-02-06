@@ -35,6 +35,11 @@ if option == 'URL (requires credentials)':
      private_key = st.text_input('Enter Private Key:', '', type='password', disabled=is_credentials)
      private_token = st.text_input('Enter Private Access Toekn:', '', type='password', disabled=is_credentials)
      
+     # fire up the Twitter API using Tweepy 
+     auth = tweepy.OAuthHandler(public_key, private_key)
+     auth.set_access_token(public_token, private_token)
+     api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
+     
      if st.button('Submit'):
           
           is_credentials = api.verify_credentials()

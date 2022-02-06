@@ -24,14 +24,13 @@ auth = tweepy.OAuthHandler(public_key, private_key)
 auth.set_access_token(public_token, private_token)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-if submit_container.button('Submit'):
+if credential_container.button('Submit'):
 
      try:
           api.verify_credentials()
-          st.markdown("Credentials successfully verified!")
-          key_container.empty()
-          token_container.empty()
-          submit_container.empty()
+          st.markdown
+          credential_container = st.empty()
+          credential_container.markdown("Credentials successfully verified!")
 
      except:
           st.markdown("Bad credentials... Please try again!")  

@@ -1,8 +1,7 @@
-from collections import namedtuple
-import altair as alt
-import math
-import pandas as pd
 import streamlit as st
+import pandas as pd
+import tweepy
+
 
 """
 # MY APP
@@ -15,12 +14,41 @@ This is my app. Yay!
 
 option = st.selectbox(
      'Please select a method for loading Tweets:',
-     ('URL (Requires API Credentials)', 'Copy & Paste', 'Sample Tweets'))
+     (
+          'URL (requires credentials)', 
+          'Copy & Paste', 
+          'Sample Tweets'
+     )
+)
+
+if option == 'URL (requires credentials)':
+     
+     public_key = '194DYG3yLlLALXtzL4XHYgLyV'
+     public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
+     
+     """
+     #### Please Enter Twitter API Credentials
+     """
+     
+     is_credentials = False
+     
+     private_key = st.text_input('Enter Private Key:', '', type='password', disabled=is_credentials)
+     private_token = st.text_input('Enter Private Access Toekn:', '', type='password', disabled=is_credentials)
+     
+     if st.button('Submit'):
+          
+          is_credentials = api.verify_credentials()
+          
+          if is_credentials:
+               st.markdown("<font color='green'> Login Successful! </font>")
+          else:
+               st.markdown("<font color='red'> Login failed... Please re-enter credentials. </font>")
+
 
 if option == 'Copy & Paste':
-
+     
      txt = st.text_area('Copy and Paste Tweet Below:', '''
           Lorem ipsum lorem ipsum lorem ipsum... 
           ''', max_chars=280)
     
-st.write('Sentiment:', txt)
+st.write('Sentiment:', 'sentiment here...')

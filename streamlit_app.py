@@ -12,27 +12,29 @@ This is my app. Yay!
 1. How does it work? 
 """
 
-credential_container = st.container()
+credential_container = st.empty()
 
-public_key = '194DYG3yLlLALXtzL4XHYgLyV'
-public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
-private_key = credential_container.text_input('Enter Private Key:', '', type='password')
-private_token = credential_container.text_input('Enter Private Access Toekn:', '', type='password')
+with credential_container.container():
 
-# fire up the Twitter API using Tweepy 
-auth = tweepy.OAuthHandler(public_key, private_key)
-auth.set_access_token(public_token, private_token)
-api = tweepy.API(auth, wait_on_rate_limit=True)
+     public_key = '194DYG3yLlLALXtzL4XHYgLyV'
+     public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
+     private_key = st.text_input('Enter Private Key:', '', type='password')
+     private_token = st.text_input('Enter Private Access Toekn:', '', type='password')
 
-if credential_container.button('Submit'):
+     # fire up the Twitter API using Tweepy 
+     auth = tweepy.OAuthHandler(public_key, private_key)
+     auth.set_access_token(public_token, private_token)
+     api = tweepy.API(auth, wait_on_rate_limit=True)
 
-     try:
-          api.verify_credentials()
-          credential_container.empty()
-          credential_container.markdown("Credentials successfully verified!")
+     if st.button('Submit'):
 
-     except:
-          st.markdown("Bad credentials... Please try again!")  
+          try:
+               api.verify_credentials()
+               credential_container.empty()
+               credential_container.markdown("Credentials successfully verified!")
+
+          except:
+               st.markdown("Bad credentials... Please try again!")  
           
           
 """

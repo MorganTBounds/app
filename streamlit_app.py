@@ -12,47 +12,39 @@ This is my app. Yay!
 1. How does it work? 
 """
 
-option = st.selectbox(
-     'Please select a method for loading Tweets:',
-     (
-          'URL (requires credentials)', 
-          'Copy & Paste', 
-          'Sample Tweets'
-     )
-)
+credential_container = st.empty()
 
-if option == 'URL (requires credentials)':
-     
-     public_key = '194DYG3yLlLALXtzL4XHYgLyV'
-     public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
-     
-     """
-     #### Please Enter Twitter API Credentials
-     """
-     
-     private_key = st.text_input('Enter Private Key:', '', type='password')
-     private_token = st.text_input('Enter Private Access Toekn:', '', type='password')
-     
-     # fire up the Twitter API using Tweepy 
-     auth = tweepy.OAuthHandler(public_key, private_key)
-     auth.set_access_token(public_token, private_token)
-     api = tweepy.API(auth, wait_on_rate_limit=True)
-     
-     if st.button('Submit'):
-          
-          try:
-               api.verify_credentials()
-               st.markdown("Credentials successfully verified!")
-          except:
-               st.markdown("Bad credentials... Please try again!")  
-               
-     tweet_url = st.text_input('Enter URL:', '')
+public_key = '194DYG3yLlLALXtzL4XHYgLyV'
+public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
+private_key = credential_container.text_input('Enter Private Key:', '', type='password')
+private_token = credential_container.text_input('Enter Private Access Toekn:', '', type='password')
 
+# fire up the Twitter API using Tweepy 
+auth = tweepy.OAuthHandler(public_key, private_key)
+auth.set_access_token(public_token, private_token)
+api = tweepy.API(auth, wait_on_rate_limit=True)
 
-if option == 'Copy & Paste':
-     
-     txt = st.text_area('Copy and Paste Tweet Below:', '''
-          Lorem ipsum lorem ipsum lorem ipsum... 
-          ''', max_chars=280)
+if st.button('Submit'):
+
+     try:
+          api.verify_credentials()
+          st.markdown("Credentials successfully verified!")
+          credential_container.empty()
+
+     except:
+          st.markdown("Bad credentials... Please try again!")  
+
+tweet_url = st.text_input('Enter URL:', '')
+
+url = 'https://twitter.com/KimKardashian/status/1489401564284346369?s=20&t=nMf-OpIe73e8Gvnh--9kPA'
+
+# Standardize URL
+tweet_url = api.get_oembed(url)['url']
+
+# Extract Tweet ID from URL
+tweet_id = tweet_url.split('/status/')[1]
+
+# Extract text
+text = api.get_status(tweet_id).text
     
-st.write('Sentiment:', 'sentiment here...')
+

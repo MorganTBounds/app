@@ -32,8 +32,8 @@ if option == 'URL (requires credentials)':
      
      is_credentials = False
      
-     private_key = st.text_input('Enter Private Key:', '', type='password', disabled=is_credentials)
-     private_token = st.text_input('Enter Private Access Toekn:', '', type='password', disabled=is_credentials)
+     private_key = st.text_input('Enter Private Key:', '', type='password')
+     private_token = st.text_input('Enter Private Access Toekn:', '', type='password')
      
      if st.button('Submit'):
           
@@ -44,6 +44,8 @@ if option == 'URL (requires credentials)':
           
           try:
                is_credentials = api.verify_credentials()
+               private_key.disabled = True
+               private_token.disabled = True
           except:
                st.markdown("Oof!")  
           

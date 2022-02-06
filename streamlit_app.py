@@ -30,29 +30,24 @@ if option == 'URL (requires credentials)':
      #### Please Enter Twitter API Credentials
      """
      
-     is_credentials = False
-     
      private_key = st.text_input('Enter Private Key:', '', type='password')
      private_token = st.text_input('Enter Private Access Toekn:', '', type='password')
      
+     # fire up the Twitter API using Tweepy 
+     auth = tweepy.OAuthHandler(public_key, private_key)
+     auth.set_access_token(public_token, private_token)
+     api = tweepy.API(auth, wait_on_rate_limit=True)
+     
      if st.button('Submit'):
           
-          # fire up the Twitter API using Tweepy 
-          auth = tweepy.OAuthHandler(public_key, private_key)
-          auth.set_access_token(public_token, private_token)
-          api = tweepy.API(auth, wait_on_rate_limit=True)
-          
           try:
-               is_credentials = api.verify_credentials()
-               private_key.disabled = True
-               private_token.disabled = True
+               api.verify_credentials()
+               st.markdown("Credentials successfully verified!")
           except:
-               st.markdown("Oof!")  
-          
-          if is_credentials:
-               st.markdown("<font color='green'> Login Successful! </font>")
-          else:
-               st.markdown("<font color='red'> Login failed... Please re-enter credentials. </font>")
+               st.markdown("Bad credentials... Please try again!")  
+               
+     if is_credentials:
+          tweet_url = st.text_input('Enter URL:', '')
 
 
 if option == 'Copy & Paste':

@@ -21,9 +21,9 @@ option = st.selectbox(
      )
 )
 
+is_credentials = False
+
 if option == 'URL (requires credentials)':
-     
-     is_credentials = False
      
      public_key = '194DYG3yLlLALXtzL4XHYgLyV'
      public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'

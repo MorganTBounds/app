@@ -15,7 +15,6 @@ This is my app. Yay!
 key_container = st.empty()
 token_container = st.empty()
 submit_container = st.empty()
-url_container = st.empty()
 
 public_key = '194DYG3yLlLALXtzL4XHYgLyV'
 public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
@@ -40,7 +39,7 @@ if submit_container.button('Submit'):
      except:
           st.markdown("Bad credentials... Please try again!")  
           
-
+url_container = st.empty()
 """
 
 url = 'https://twitter.com/KimKardashian/status/1489401564284346369?s=20&t=nMf-OpIe73e8Gvnh--9kPA'

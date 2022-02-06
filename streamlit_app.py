@@ -21,8 +21,6 @@ option = st.selectbox(
      )
 )
 
-is_credentials = False
-
 if option == 'URL (requires credentials)':
      
      public_key = '194DYG3yLlLALXtzL4XHYgLyV'
@@ -43,13 +41,12 @@ if option == 'URL (requires credentials)':
      if st.button('Submit'):
           
           try:
-               is_credentials = api.verify_credentials()
+               api.verify_credentials()
                st.markdown("Credentials successfully verified!")
           except:
                st.markdown("Bad credentials... Please try again!")  
                
-     if is_credentials:
-          tweet_url = st.text_input('Enter URL:', '')
+     tweet_url = st.text_input('Enter URL:', '')
 
 
 if option == 'Copy & Paste':

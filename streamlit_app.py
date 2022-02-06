@@ -12,14 +12,12 @@ This is my app. Yay!
 1. How does it work? 
 """
 
-key_container = st.empty()
-token_container = st.empty()
-submit_container = st.empty()
+credential_container = st.container()
 
 public_key = '194DYG3yLlLALXtzL4XHYgLyV'
 public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
-private_key = key_container.text_input('Enter Private Key:', '', type='password')
-private_token = token_container.text_input('Enter Private Access Toekn:', '', type='password')
+private_key = credential_container.text_input('Enter Private Key:', '', type='password')
+private_token = credential_container.text_input('Enter Private Access Toekn:', '', type='password')
 
 # fire up the Twitter API using Tweepy 
 auth = tweepy.OAuthHandler(public_key, private_key)
@@ -34,12 +32,14 @@ if submit_container.button('Submit'):
           key_container.empty()
           token_container.empty()
           submit_container.empty()
-          url_container.text_input('Enter URL:', '')
 
      except:
           st.markdown("Bad credentials... Please try again!")  
           
 url_container = st.empty()
+
+if 
+          
 """
 
 url = 'https://twitter.com/KimKardashian/status/1489401564284346369?s=20&t=nMf-OpIe73e8Gvnh--9kPA'

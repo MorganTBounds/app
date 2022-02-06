@@ -17,6 +17,15 @@ In the meantime, below is an example of what you can do with just a few lines of
 
 
 with st.echo(code_location='below'):
+    
+    txt = st.text_area('Text to analyze', '''
+     It was the best of times, it was the worst of times, it was
+     the age of wisdom, it was the age of foolishness, it was
+     the epoch of belief, it was the epoch of incredulity, it
+     was the season of Light, it was the season of Darkness, it
+     was the spring of hope, it was the winter of despair, (...)
+     ''')
+    
     total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
     num_turns = st.slider("Number of turns in spiral", 1, 100, 9)
 

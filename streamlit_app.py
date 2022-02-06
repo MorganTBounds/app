@@ -13,8 +13,14 @@ This is my app. Yay!
 1. How does it work? 
 """
 
-txt = st.text_area('Copy and Paste Tweet Below:', '''
-     Lorem ipsum lorem ipsum lorem ipsum... 
-     ''', max_chars=280)
+option = st.selectbox(
+     'Please select a method for loading Tweets:',
+     ('URL (Requires API Credentials)', 'Copy & Paste', 'Sample Tweets'))
+
+if option == 'Copy & Paste':
+
+     txt = st.text_area('Copy and Paste Tweet Below:', '''
+          Lorem ipsum lorem ipsum lorem ipsum... 
+          ''', max_chars=280)
     
 st.write('Sentiment:', txt)

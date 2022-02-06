@@ -15,6 +15,7 @@ This is my app. Yay!
 key_container = st.empty()
 token_container = st.empty()
 submit_container = st.empty()
+url_container = st.empty()
 
 public_key = '194DYG3yLlLALXtzL4XHYgLyV'
 public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
@@ -34,13 +35,11 @@ if submit_container.button('Submit'):
           key_container.empty()
           token_container.empty()
           submit_container.empty()
+          url_container.text_input('Enter URL:', '')
 
      except:
           st.markdown("Bad credentials... Please try again!")  
           
-   
-
-tweet_url = st.text_input('Enter URL:', '')
 
 """
 

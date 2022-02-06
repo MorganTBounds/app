@@ -23,6 +23,8 @@ option = st.selectbox(
 
 if option == 'URL (requires credentials)':
      
+     is_credentials = False
+     
      public_key = '194DYG3yLlLALXtzL4XHYgLyV'
      public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
      
@@ -37,8 +39,6 @@ if option == 'URL (requires credentials)':
      auth = tweepy.OAuthHandler(public_key, private_key)
      auth.set_access_token(public_token, private_token)
      api = tweepy.API(auth, wait_on_rate_limit=True)
-     
-     is_credentials = False
      
      if st.button('Submit'):
           

@@ -40,7 +40,10 @@ if option == 'URL (requires credentials)':
           # fire up the Twitter API using Tweepy 
           auth = tweepy.OAuthHandler(public_key, private_key)
           auth.set_access_token(public_token, private_token)
-          api = tweepy.API(auth, wait_on_rate_limit=True)
+          try:
+               api = tweepy.API(auth, wait_on_rate_limit=True)
+          except:
+               st.markdown("Oof!")
      
           is_credentials = api.verify_credentials()
           

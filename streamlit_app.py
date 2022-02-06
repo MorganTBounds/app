@@ -13,11 +13,8 @@ This is my app. Yay!
 1. How does it work? 
 """
 
-
-with st.echo(code_location='below'):
-    
-    txt = st.text_area('Copy and Paste Tweet Below:', '''
+txt = st.text_area('Copy and Paste Tweet Below:', '''
      Lorem ipsum lorem ipsum lorem ipsum... 
      ''', max_chars=280)
     
-    st.write('Sentiment:', txt)
+st.write('Sentiment:', txt)

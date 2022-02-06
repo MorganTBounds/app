@@ -28,7 +28,7 @@ if credential_container.button('Submit'):
 
      try:
           api.verify_credentials()
-          credential_container = st.empty()
+          credential_container.empty()
           credential_container.markdown("Credentials successfully verified!")
 
      except:

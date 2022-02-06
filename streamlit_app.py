@@ -38,10 +38,12 @@ if option == 'URL (requires credentials)':
      auth.set_access_token(public_token, private_token)
      api = tweepy.API(auth, wait_on_rate_limit=True)
      
+     is_credentials = False
+     
      if st.button('Submit'):
           
           try:
-               api.verify_credentials()
+               is_credentials = api.verify_credentials()
                st.markdown("Credentials successfully verified!")
           except:
                st.markdown("Bad credentials... Please try again!")  

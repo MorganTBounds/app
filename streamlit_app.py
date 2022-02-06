@@ -24,6 +24,6 @@ with st.echo(code_location='below'):
      the epoch of belief, it was the epoch of incredulity, it
      was the season of Light, it was the season of Darkness, it
      was the spring of hope, it was the winter of despair, (...)
-     ''')
+     ''', max_chars=280)
     
     st.write('Sentiment:', txt)

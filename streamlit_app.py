@@ -28,16 +28,12 @@ if credential_container.button('Submit'):
 
      try:
           api.verify_credentials()
-          st.markdown
           credential_container = st.empty()
           credential_container.markdown("Credentials successfully verified!")
 
      except:
           st.markdown("Bad credentials... Please try again!")  
           
-url_container = st.empty()
-
-if 
           
 """
 

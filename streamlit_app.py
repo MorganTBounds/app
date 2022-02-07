@@ -32,7 +32,7 @@ with st.form("credentials"):
           except:
                st.markdown("Bad credentials... Please try again!")  
                
-st.text_input('Enter URL:', '')
+url = st.text_input('Enter URL:', '')
 
 tweet_text = ''
 

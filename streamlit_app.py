@@ -36,7 +36,7 @@ with st.form("credentials"):
 
 url = st.text_input('Enter URL:', '')
 
-is_tweet = False
+is_disabled = True
 
 if st.button("Fetch Tweet"):
      # Standardize URL
@@ -51,9 +51,9 @@ if st.button("Fetch Tweet"):
      # Display Text
      st.text_area('Tweet:', text, max_chars=280, disabled=True)
      
-     is_tweet=True
+     is_disabled=False
      
-if st.button('Classify Tweet', disabled=-is_tweet):
+if st.button('Classify Tweet', disabled=is_disabled):
      st.write('test:', text)
 
 """

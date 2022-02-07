@@ -29,6 +29,32 @@ public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
 credential_container = st.empty()
 
 if st.session_state.is_credential:
+     auth = tweepy.OAuthHandler(public_key, st.session_state.private_key)
+     auth.set_access_token(public_token, st.session_state.private_token)
+     api = tweepy.API(auth, wait_on_rate_limit=True)
+     st.markdown("Credentials successfully verified!")
+
+     url = st.text_input('Enter URL:', '')
+
+     if st.button("Fetch Tweet"):
+          # Standardize URL
+          tweet_url = api.get_oembed(url)['url']
+
+          # Extract Tweet ID from URL
+          tweet_id = tweet_url.split('/status/')[1]
+
+          # Extract text
+          text = api.get_status(tweet_id).text
+
+          # Display Text
+          st.text_area('Tweet:', text, max_chars=280, disabled=True)
+
+          is_disabled=False
+
+     if st.button('Classify Tweet', disabled=is_disabled):
+          st.write('test:', text)
+     
+else:         
      with credential_container.container():
           private_key = st.text_input('Enter Private Key:', '', type='password')
           private_token = st.text_input('Enter Private Access Token:', '', type='password')
@@ -47,39 +73,7 @@ if st.session_state.is_credential:
 
                except:
                     st.markdown("Bad credentials... Please try again!")  
-               
-if st.session_state.is_credential:
-     st.markdown("Credentials successfully verified!")
-     
-else:
-     auth = tweepy.OAuthHandler(public_key, st.session_state.private_key)
-     auth.set_access_token(public_token, st.session_state.private_token)
-     api = tweepy.API(auth, wait_on_rate_limit=True)
-     st.markdown("Credentials successfully verified!")
-               
 
-
-url = st.text_input('Enter URL:', '')
-
-is_disabled = True
-
-if st.button("Fetch Tweet"):
-     # Standardize URL
-     tweet_url = api.get_oembed(url)['url']
-
-     # Extract Tweet ID from URL
-     tweet_id = tweet_url.split('/status/')[1]
-
-     # Extract text
-     text = api.get_status(tweet_id).text
-     
-     # Display Text
-     st.text_area('Tweet:', text, max_chars=280, disabled=True)
-     
-     is_disabled=False
-     
-if st.button('Classify Tweet', disabled=is_disabled):
-     st.write('test:', text)
 
 """
 

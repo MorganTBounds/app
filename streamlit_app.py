@@ -31,7 +31,7 @@ temp.expanded = True
 public_key = '194DYG3yLlLALXtzL4XHYgLyV'
 public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
      
-private_key = st.text_input('Enter Private Key:', , type='password')
+private_key = st.text_input('Enter Private Key:', '', type='password')
 private_token = st.text_input('Enter Private Access Token:', '', type='password')
 
 # Every form must have a submit button.

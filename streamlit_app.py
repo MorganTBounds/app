@@ -27,7 +27,7 @@ with st.form("credentials"):
      submitted = st.form_submit_button("Submit")
 
      if submitted:
-     st.write("slider", slider_val, "checkbox", checkbox_val)
+          st.write("slider", slider_val, "checkbox", checkbox_val)
           
 """
 credential_container = st.empty()

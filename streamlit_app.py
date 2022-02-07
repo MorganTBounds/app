@@ -28,6 +28,28 @@ public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
 
 credential_container = st.empty()
 
+if not st.session_state.is_credential:
+     with credential_container.container():
+          private_key = st.text_input('Enter Private Key:', '', type='password')
+          private_token = st.text_input('Enter Private Access Token:', '', type='password')
+
+          if st.button("Submit"):
+               try:
+                    # fire up the Twitter API using Tweepy 
+                    auth = tweepy.OAuthHandler(public_key, private_key)
+                    auth.set_access_token(public_token, private_token)
+                    api = tweepy.API(auth, wait_on_rate_limit=True)
+                    api.verify_credentials()
+
+                    st.session_state.is_credential = True
+                    st.session_state.private_key = private_key
+                    st.session_state.private_token = private_token
+
+                    credential_container.empty()
+
+               except:
+                    st.markdown("Bad credentials... Please try again!")  
+
 if st.session_state.is_credential:
      auth = tweepy.OAuthHandler(public_key, st.session_state.private_key)
      auth.set_access_token(public_token, st.session_state.private_token)
@@ -54,27 +76,8 @@ if st.session_state.is_credential:
      if st.button('Classify Tweet', disabled=is_disabled):
           st.write('test:', text)
      
-else:         
-     with credential_container.container():
-          private_key = st.text_input('Enter Private Key:', '', type='password')
-          private_token = st.text_input('Enter Private Access Token:', '', type='password')
+       
 
-          if st.button("Submit"):
-               try:
-                    # fire up the Twitter API using Tweepy 
-                    auth = tweepy.OAuthHandler(public_key, private_key)
-                    auth.set_access_token(public_token, private_token)
-                    api = tweepy.API(auth, wait_on_rate_limit=True)
-                    api.verify_credentials()
-
-                    st.session_state.is_credential = True
-                    st.session_state.private_key = private_key
-                    st.session_state.private_token = private_token
-                    
-                    st.experimental_rerun()
-
-               except:
-                    st.markdown("Bad credentials... Please try again!")  
 
 
 """

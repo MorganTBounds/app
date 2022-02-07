@@ -44,7 +44,7 @@ if st.button("Classify Tweet"):
      # Extract text
      text = api.get_status(tweet_id).text
      
-text
+     text
           
 
 """

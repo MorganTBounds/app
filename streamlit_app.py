@@ -35,10 +35,10 @@ with st.form("credentials"):
 url_container = st.container()
 
 text_container = st.empty()
-
-text = text_container.text_area('Tweet:', '', max_chars=280)
                
 url = url_container.text_input('Enter URL:', '')
+
+tweet_text = ''
 
 if url_container.button("Fetch Tweet"):
      # Standardize URL
@@ -50,12 +50,9 @@ if url_container.button("Fetch Tweet"):
      # Extract text
      tweet_text = api.get_status(tweet_id).text
      
-     # Display text
-     text = text_container.text_area('Tweet:', tweet_text, max_chars=280)
-     
 
-          
-st.write('Tweet:', text)
+text = text_container.text_area('Tweet:', tweet_text, max_chars=280)
+
 """
 
 url = https://twitter.com/KimKardashian/status/1489401564284346369?s=20&t=nMf-OpIe73e8Gvnh--9kPA

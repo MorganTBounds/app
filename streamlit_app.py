@@ -20,7 +20,7 @@ if 'private_key' not in st.session_state:
 if 'private_token' not in st.session_state:
      st.session_state.private_token = ''
      
-with st.form:
+with st.form():
      public_key = '194DYG3yLlLALXtzL4XHYgLyV'
      public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
      

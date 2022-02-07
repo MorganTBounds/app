@@ -49,7 +49,9 @@ if st.button("Fetch Tweet"):
 
 text = st.text_area('Tweet:', tweet_text, max_chars=280)
 
-st.write('test:', text)
+if st.button('Classify Tweet'):
+
+     st.write('test:', text)
 
 """
 

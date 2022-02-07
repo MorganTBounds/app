@@ -24,10 +24,13 @@ with st.form("credentials"):
      api = tweepy.API(auth, wait_on_rate_limit=True)
 
      # Every form must have a submit button.
-     submitted = st.form_submit_button("Submit")
+     if st.form_submit_button("Submit"):
+          try:
+               api.verify_credentials()
+               st.markdown("Credentials successfully verified!")
 
-     if submitted:
-          st.write("slider", slider_val, "checkbox", checkbox_val)
+          except:
+               st.markdown("Bad credentials... Please try again!")  
           
 """
 credential_container = st.empty()

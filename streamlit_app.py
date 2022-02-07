@@ -25,11 +25,11 @@ if 'private_token' not in st.session_state:
 public_key = '194DYG3yLlLALXtzL4XHYgLyV'
 public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
      
-private_key = st.text_input('Enter Private Key:', '', type='password', disabled=is_credential)
-private_token = st.text_input('Enter Private Access Token:', '', type='password', disabled=is_credential)
+private_key = st.text_input('Enter Private Key:', '', type='password', disabled=st.session_state.is_credential)
+private_token = st.text_input('Enter Private Access Token:', '', type='password', disabled=st.session_state.is_credential)
 
 # Every form must have a submit button.
-if st.button("Submit", disabled=is_credential):
+if st.button("Submit", disabled=st.session_state.is_credential):
      try:
           # fire up the Twitter API using Tweepy 
           auth = tweepy.OAuthHandler(public_key, private_key)
@@ -44,7 +44,7 @@ if st.button("Submit", disabled=is_credential):
      except:
           st.markdown("Bad credentials... Please try again!")  
                
-if is_credential:
+if st.session_state.is_credential:
      st.markdown("Credentials successfully verified!")
      
 else:

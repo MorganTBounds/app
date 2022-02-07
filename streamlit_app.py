@@ -69,7 +69,9 @@ else:
 
                     st.session_state.is_credential = True
                     st.session_state.private_key = private_key
-                    st.session_state.private_token = private_token         
+                    st.session_state.private_token = private_token
+                    
+                    st.experimental_rerun()
 
                except:
                     st.markdown("Bad credentials... Please try again!")  

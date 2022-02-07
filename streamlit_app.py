@@ -32,11 +32,15 @@ with st.form("credentials"):
           except:
                st.markdown("Bad credentials... Please try again!")  
                
-url = st.text_input('Enter URL:', '')
+url_container = st.container()
 
-tweet_text = ''
+tweet_container = st.empty()
 
-if st.button("Fetch Tweet"):
+text = tweet_container.text_area('Tweet:', '', max_chars=280)
+
+url = url_container.text_input('Enter URL:', '')
+
+if url_container.button("Fetch Tweet"):
      # Standardize URL
      tweet_url = api.get_oembed(url)['url']
 
@@ -44,10 +48,11 @@ if st.button("Fetch Tweet"):
      tweet_id = tweet_url.split('/status/')[1]
 
      # Extract text
-     tweet_text = api.get_status(tweet_id).text
+     fetch_text = api.get_status(tweet_id).text
      
-
-text = st.text_area('Tweet:', tweet_text, max_chars=280)
+     # Display text
+     text = tweet_container.text_area('Tweet:', fetch_text, max_chars=280)
+     
 
 if st.button('Classify Tweet'):
 

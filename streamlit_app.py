@@ -45,9 +45,11 @@ if st.button("Fetch Tweet"):
      fetch_text = api.get_status(tweet_id).text
      
      # Display text
-     text.value = fetch_text
+     text_container.text_area('Tweet:', fetch_text, max_chars=280)
      
-text = st.text_area('Tweet:', '', max_chars=280)
+text_container = st.empty()
+     
+text_container.text_area('Tweet:', '', max_chars=280)
           
 
 """

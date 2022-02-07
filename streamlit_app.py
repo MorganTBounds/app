@@ -78,7 +78,9 @@ if st.session_state.is_credential:
           
 
      # Display Text
-     text = st.text_area('Tweet:', st.session_state.init_text, max_chars=280, on_change=save_text, args=text)
+     text = st.text_area('Tweet:', st.session_state.init_text, max_chars=280)
+     
+     st.session_state.init_text = text
 
      if st.button('Classify Tweet'):
           st.write('test:', st.session_state.init_text)

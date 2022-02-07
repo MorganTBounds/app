@@ -20,6 +20,9 @@ if 'private_key' not in st.session_state:
      
 if 'private_token' not in st.session_state:
      st.session_state.private_token = ''
+     
+if 'init_text' not in st.session_state:
+     st.sesssion_state.init_text = ''
 
 
 # Get public keys 
@@ -57,6 +60,9 @@ if st.session_state.is_credential:
      st.markdown("Credentials successfully verified!")
 
      url = st.text_input('Enter URL:', '')
+     
+     def save_text(value):
+          st.session_state.init_text = value
 
      if st.button("Fetch Tweet"):
           # Standardize URL
@@ -66,15 +72,16 @@ if st.session_state.is_credential:
           tweet_id = tweet_url.split('/status/')[1]
 
           # Extract text
-          text = api.get_status(tweet_id).text
+          tweet_text = api.get_status(tweet_id).text
+          
+          save_text(tweet_text)
+          
 
-          # Display Text
-          st.text_area('Tweet:', text, max_chars=280, disabled=True)
+     # Display Text
+     text = st.text_area('Tweet:', st.session_state.init_text, max_chars=280, on_change=save_text, args=value)
 
-          is_disabled=False
-
-     if st.button('Classify Tweet', disabled=is_disabled):
-          st.write('test:', text)
+     if st.button('Classify Tweet'):
+          st.write('test:', st.session_state.init_text)
      
        
 

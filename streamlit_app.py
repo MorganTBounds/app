@@ -33,12 +33,11 @@ with credential_container.container():
                api.verify_credentials()
                credential_container.empty()
                credential_container.markdown("Credentials successfully verified!")
-               url_container.text_input('Enter URL:', '')
+               url = url_container.text_input('Enter URL:', '')
 
           except:
                st.markdown("Bad credentials... Please try again!")  
                
-st.write('test', public_key)
           
           
 """

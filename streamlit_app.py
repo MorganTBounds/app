@@ -52,7 +52,8 @@ if url_container.button("Fetch Tweet"):
      
      # Display text
      text = tweet_container.text_area('Tweet:', fetch_text, max_chars=280)
-st.write('test', text) 
+     
+text.value = 'hello'
 
 if st.button('Classify Tweet'):
 

@@ -22,7 +22,7 @@ if 'private_token' not in st.session_state:
      st.session_state.private_token = ''
      
 if 'init_text' not in st.session_state:
-     st.sesssion_state.init_text = ''
+     st.session_state.init_text = ''
 
 
 # Get public keys 

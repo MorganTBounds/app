@@ -45,6 +45,8 @@ if st.button("Fetch Tweet"):
 
      # Extract text
      init_text = api.get_status(tweet_id).text
+else:
+     init_text = ''
      
 
 text = st.text_area('Tweet:', init_text, max_chars=280)

@@ -20,13 +20,19 @@ if 'private_key' not in st.session_state:
      
 if 'private_token' not in st.session_state:
      st.session_state.private_token = ''
+     
+temp = st.expander("hello")
+
+temp.markdown("goodbye")
+
+temp.expanded = True
 
 # Get public keys 
 public_key = '194DYG3yLlLALXtzL4XHYgLyV'
 public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
      
-private_key = st.text_input('Enter Private Key:', '', type='password', disabled=st.session_state.is_credential)
-private_token = st.text_input('Enter Private Access Token:', '', type='password', disabled=st.session_state.is_credential)
+private_key = st.text_input('Enter Private Key:', , type='password')
+private_token = st.text_input('Enter Private Access Token:', '', type='password')
 
 # Every form must have a submit button.
 if st.button("Submit", disabled=st.session_state.is_credential):

@@ -34,7 +34,9 @@ with st.form("credentials"):
                
 url_container = st.container()
 
-text = st.text_area('Tweet:', '', max_chars=280)
+text_container = st.empty()
+
+text_container.text_area('Tweet:', '', max_chars=280)
                
 url = url_container.text_input('Enter URL:', '')
 
@@ -46,10 +48,10 @@ if url_container.button("Fetch Tweet"):
      tweet_id = tweet_url.split('/status/')[1]
 
      # Extract text
-     fetch_text = api.get_status(tweet_id).text
+     tweet_text = api.get_status(tweet_id).text
      
      # Display text
-     text.value = fetch_text
+     text_container.text_area('Tweet:', tweet_text, max_chars=280)
      
 
           

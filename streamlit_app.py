@@ -28,21 +28,21 @@ public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
 private_key = st.text_input('Enter Private Key:', '', type='password', disabled=is_credential)
 private_token = st.text_input('Enter Private Access Token:', '', type='password', disabled=is_credential)
 
-     # Every form must have a submit button.
-     if st.button("Submit", disabled=is_credential):
-          try:
-               # fire up the Twitter API using Tweepy 
-               auth = tweepy.OAuthHandler(public_key, private_key)
-               auth.set_access_token(public_token, private_token)
-               api = tweepy.API(auth, wait_on_rate_limit=True)
-               api.verify_credentials()
+# Every form must have a submit button.
+if st.button("Submit", disabled=is_credential):
+     try:
+          # fire up the Twitter API using Tweepy 
+          auth = tweepy.OAuthHandler(public_key, private_key)
+          auth.set_access_token(public_token, private_token)
+          api = tweepy.API(auth, wait_on_rate_limit=True)
+          api.verify_credentials()
 
-               st.session_state.is_credential = True
-               st.session_state.private_key = private_key
-               st.session_state.private_token = private_token         
+          st.session_state.is_credential = True
+          st.session_state.private_key = private_key
+          st.session_state.private_token = private_token         
 
-          except:
-               st.markdown("Bad credentials... Please try again!")  
+     except:
+          st.markdown("Bad credentials... Please try again!")  
                
 if is_credential:
      st.markdown("Credentials successfully verified!")

@@ -13,6 +13,7 @@ This is my app. Yay!
 """
 
 credential_container = st.empty()
+url_container = st.empty()
 
 with credential_container.container():
 
@@ -32,9 +33,12 @@ with credential_container.container():
                api.verify_credentials()
                credential_container.empty()
                credential_container.markdown("Credentials successfully verified!")
+               url = url_container.text_input('Enter URL:', '')
 
           except:
                st.markdown("Bad credentials... Please try again!")  
+               
+     st.write('Current URL:', url)
           
           
 """

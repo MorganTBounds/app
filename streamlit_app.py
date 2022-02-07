@@ -44,12 +44,12 @@ if st.button("Fetch Tweet"):
      tweet_id = tweet_url.split('/status/')[1]
 
      # Extract text
-     init_text = api.get_status(tweet_id).text
-else:
-     init_text = ''
+     fetch_text = api.get_status(tweet_id).text
      
-
-text = st.text_area('Tweet:', init_text, max_chars=280)
+     text = st.text_area('Tweet:', fetch_text, max_chars=280)
+else:
+     text = st.text_area('Tweet:', '', max_chars=280)
+     
      
 if st.button('Classify Tweet'):
 

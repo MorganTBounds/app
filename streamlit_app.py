@@ -11,6 +11,7 @@ This is my app. Yay!
 ## FAQ
 1. How does it work? 
 """
+
 # Add session variables 
 if 'is_credential' not in st.session_state:
      st.session_state.is_credential = False
@@ -29,16 +30,20 @@ if 'init_text' not in st.session_state:
 public_key = '194DYG3yLlLALXtzL4XHYgLyV'
 public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
 
+# Instantiate credential container 
 credential_container = st.empty()
 
+# If valid credentials haven't been given, ask for credentials input 
 if not st.session_state.is_credential:
      with credential_container.container():
+          # Input for typing in credentials 
           private_key = st.text_input('Enter Private Key:', '', type='password')
           private_token = st.text_input('Enter Private Access Token:', '', type='password')
-
+          
+          # Check credentials
           if st.button("Submit"):
+               # If credential are verified, cache in session state and collapse input UI
                try:
-                    # fire up the Twitter API using Tweepy 
                     auth = tweepy.OAuthHandler(public_key, private_key)
                     auth.set_access_token(public_token, private_token)
                     api = tweepy.API(auth, wait_on_rate_limit=True)
@@ -49,21 +54,22 @@ if not st.session_state.is_credential:
                     st.session_state.private_token = private_token
 
                     credential_container.empty()
-
+               # If credentials don't work, ask to resubmit
                except:
                     st.markdown("Bad credentials... Please try again!")  
 
+# If valid credentials have already been given, proceed
 if st.session_state.is_credential:
+     # Fire up the Twitter API with given credentials 
      auth = tweepy.OAuthHandler(public_key, st.session_state.private_key)
      auth.set_access_token(public_token, st.session_state.private_token)
      api = tweepy.API(auth, wait_on_rate_limit=True)
      st.markdown("Credentials successfully verified!")
-
-     url = st.text_input('Enter URL:', '')
      
-     def save_text(value):
-          st.session_state.init_text = value
+     # Input for Tweet URL 
+     url = st.text_input('Enter URL:', '')
 
+     # Use Twitter API to extract text of tweet from URL 
      if st.button("Fetch Tweet"):
           # Standardize URL
           tweet_url = api.get_oembed(url)['url']
@@ -74,12 +80,14 @@ if st.session_state.is_credential:
           # Extract text
           tweet_text = api.get_status(tweet_id).text
           
-          save_text(tweet_text)
+          # Cache in session state
+          st.session_state.init_text = tweet_text
           
 
-     # Display Text
+     # Display tweet and/or manually enter tweet
      text = st.text_area('Tweet:', st.session_state.init_text, max_chars=280)
      
+     # Cache tweet text input in session state
      st.session_state.init_text = text
 
      if st.button('Classify Tweet'):

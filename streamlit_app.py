@@ -37,6 +37,8 @@ with credential_container.container():
 
           except:
                st.markdown("Bad credentials... Please try again!")  
+               
+st.write('test', public_key)
           
           
 """

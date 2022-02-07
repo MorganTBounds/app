@@ -36,7 +36,7 @@ url_container = st.container()
 
 text_container = st.empty()
 
-text_container.text_area('Tweet:', '', max_chars=280)
+text = text_container.text_area('Tweet:', '', max_chars=280)
                
 url = url_container.text_input('Enter URL:', '')
 
@@ -51,7 +51,7 @@ if url_container.button("Fetch Tweet"):
      tweet_text = api.get_status(tweet_id).text
      
      # Display text
-     text_container.text_area('Tweet:', tweet_text, max_chars=280)
+     text = text_container.text_area('Tweet:', tweet_text, max_chars=280)
      
 
           

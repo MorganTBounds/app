@@ -34,7 +34,7 @@ with st.form("credentials"):
                
 url = st.text_input('Enter URL:', '')
 
-if st.button("Classify Tweet"):
+if st.button("Fetch Tweet"):
      # Standardize URL
      tweet_url = api.get_oembed(url)['url']
 
@@ -42,9 +42,12 @@ if st.button("Classify Tweet"):
      tweet_id = tweet_url.split('/status/')[1]
 
      # Extract text
-     text = api.get_status(tweet_id).text
+     fetch_text = api.get_status(tweet_id).text
      
-     text
+     # Display text
+     text.value = fetch_text
+     
+text = st.text_area('Tweet:', '', max_chars=280)
           
 
 """

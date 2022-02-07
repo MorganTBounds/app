@@ -55,7 +55,7 @@ if url_container.button("Fetch Tweet"):
      
 
           
-
+st.write('Tweet:', text)
 """
 
 url = https://twitter.com/KimKardashian/status/1489401564284346369?s=20&t=nMf-OpIe73e8Gvnh--9kPA

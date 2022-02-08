@@ -71,19 +71,22 @@ if st.session_state.is_credential:
 
      # Use Twitter API to extract text of tweet from URL 
      if st.button("Fetch Tweet"):
-          # Standardize URL
-          tweet_url = api.get_oembed(url)['url']
-
-          # Extract Tweet ID from URL
-          tweet_id = tweet_url.split('/status/')[1]
-
-          # Extract text
-          tweet_text = api.get_status(tweet_id).text
           
-          # Cache in session state
-          st.session_state.tweet_text = tweet_text
-          
+          try:
+               # Standardize URL
+               tweet_url = api.get_oembed(url)['url']
 
+               # Extract Tweet ID from URL
+               tweet_id = tweet_url.split('/status/')[1]
+
+               # Extract text
+               tweet_text = api.get_status(tweet_id).text
+
+               # Cache in session state
+               st.session_state.tweet_text = tweet_text
+          except:
+               st.markdown("Invalid URL... Please try again!")
+          
      # Display tweet and/or manually enter tweet
      text = st.text_area('Tweet:', st.session_state.tweet_text, max_chars=280)
      

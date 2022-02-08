@@ -45,6 +45,9 @@ with credential_container:
                auth.set_access_token(public_token, private_token)
                api = tweepy.API(auth, wait_on_rate_limit=True)
                api.verify_credentials()
+               
+               st.session_state.private_key = private_key
+               st.session_state.private_token = private_token
 
                st.session_state.is_credential = True
 

@@ -30,7 +30,7 @@ if 'tweet_text' not in st.session_state:
 public_key = '194DYG3yLlLALXtzL4XHYgLyV'
 public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
 
-credential_container = st.expander("Twitter API Credentials", expanded=~st.session_state.is_credential)
+credential_container = st.expander("Twitter API Credentials")
 
 with credential_container:
      # If valid credentials haven't been given, ask for credentials input ]
@@ -53,12 +53,11 @@ with credential_container:
                st.markdown("Bad credentials... Please try again!")
                st.session_state.is_credential = False
 
-          # Once valid credentials entered, refresh so credential container collapses
-          if st.session_state.is_credential:
-               st.experimental_rerun()
-
 # If valid credentials have already been given, proceed
 if st.session_state.is_credential:
+     # Give confirmation in credential container
+     credential_container.markdown("Credentials successfully verified!")
+     
      # Fire up the Twitter API with given credentials 
      auth = tweepy.OAuthHandler(public_key, st.session_state.private_key)
      auth.set_access_token(public_token, st.session_state.private_token)

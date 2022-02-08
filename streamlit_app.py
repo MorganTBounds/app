@@ -30,7 +30,7 @@ if 'tweet_text' not in st.session_state:
 public_key = '194DYG3yLlLALXtzL4XHYgLyV'
 public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
 
-credential_container = st.expander("Twitter API Credentials", expanded=st.session_state.is_credential)
+credential_container = st.expander("Twitter API Credentials", expanded=~st.session_state.is_credential)
 
 with credential_container:
      # If valid credentials haven't been given, ask for credentials input ]

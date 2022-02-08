@@ -30,31 +30,29 @@ if 'tweet_text' not in st.session_state:
 public_key = '194DYG3yLlLALXtzL4XHYgLyV'
 public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
 
-# If valid credentials haven't been given, ask for credentials input 
-if not st.session_state.is_credential:
-     # Input for typing in credentials 
-     private_key = st.text_input('Enter Private Key:', st.session_state.private_key, type='password', disabled=st.session_state.is_credential)
-     private_token = st.text_input('Enter Private Access Token:', st.session_state.private_key, type='password', disabled=st.session_state.is_credential)
-     
-     # Check credentials
-     if st.button("Submit", disabled=st.session_state.is_credential):
-          # If credential are verified, cache in session state and disable credential UI to prevent valid credentials from being overwritten 
-          try:
-               auth = tweepy.OAuthHandler(public_key, private_key)
-               auth.set_access_token(public_token, private_token)
-               api = tweepy.API(auth, wait_on_rate_limit=True)
-               api.verify_credentials()
+# If valid credentials haven't been given, ask for credentials input ]
+private_key = st.text_input('Enter Private Key:', st.session_state.private_key, type='password', disabled=st.session_state.is_credential)
+private_token = st.text_input('Enter Private Token:', st.session_state.private_token, type='password', disabled=st.session_state.is_credential)
 
-               st.session_state.is_credential = True
-               st.session_state.private_key = private_key
-               st.session_state.private_token = private_token
-               
-               # refresh app so that credentials UI is disabled
-               st.experimental_rerun()
-               
-          # If credentials don't work, ask to resubmit
-          except:
-               st.markdown("Bad credentials... Please try again!")  
+# Check credentials
+if st.button("Submit", disabled=st.session_state.is_credential):
+     # If credential are verified, cache in session state and disable credential UI to prevent valid credentials from being overwritten 
+     try:
+          auth = tweepy.OAuthHandler(public_key, private_key)
+          auth.set_access_token(public_token, private_token)
+          api = tweepy.API(auth, wait_on_rate_limit=True)
+          api.verify_credentials()
+
+          st.session_state.is_credential = True
+          st.session_state.private_key = private_key
+          st.session_state.private_token = private_token
+
+          # refresh app so that credentials UI is disabled
+          st.experimental_rerun()
+
+     # If credentials don't work, ask to resubmit
+     except:
+          st.markdown("Bad credentials... Please try again!")  
 
 # If valid credentials have already been given, proceed
 if st.session_state.is_credential:

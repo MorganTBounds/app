@@ -49,7 +49,9 @@ if st.button("Submit", disabled=st.session_state.is_credential):
      except:
           st.markdown("Bad credentials... Please try again!")  
           
-     st.experimental_rerun()
+     # Refresh app if credentials are verified
+     if st.session_state.is_credential:
+          st.experimental_rerun()
 
 # If valid credentials have already been given, proceed
 if st.session_state.is_credential:

@@ -30,7 +30,7 @@ if 'tweet_text' not in st.session_state:
 public_key = '194DYG3yLlLALXtzL4XHYgLyV'
 public_token = '1421108778842349570-4OM14pkDa47PXsP7TzSHMUfHqYQWjV'
 
-credential_container = st.expander("Twitter API Credentials")
+credential_container = st.expander("Twitter API Credentials", expanded=True)
 
 with credential_container:
      # If valid credentials haven't been given, ask for credentials input ]
@@ -63,8 +63,6 @@ if st.session_state.is_credential:
      auth.set_access_token(public_token, st.session_state.private_token)
      api = tweepy.API(auth, wait_on_rate_limit=True)
      
-     st.markdown("Credentials successfully verified!")
-     
      # Input for Tweet URL 
      url = st.text_input('Enter URL:', '')
 
@@ -90,7 +88,7 @@ if st.session_state.is_credential:
      st.session_state.tweet_text = text
 
      if st.button('Classify Tweet'):
-          st.write('test:', st.session_state.init_text)
+          st.write('test:', st.session_state.tweet_text)
      
        
 

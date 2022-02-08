@@ -44,15 +44,12 @@ if st.button("Submit", disabled=st.session_state.is_credential):
           api.verify_credentials()
 
           st.session_state.is_credential = True
-          st.session_state.private_key = private_key
-          st.session_state.private_token = private_token
-
-          # refresh app so that credentials UI is disabled
-          st.experimental_rerun()
 
      # If credentials don't work, ask to resubmit
      except:
           st.markdown("Bad credentials... Please try again!")  
+          
+     st.experimental_rerun()
 
 # If valid credentials have already been given, proceed
 if st.session_state.is_credential:

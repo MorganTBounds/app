@@ -8,7 +8,7 @@ import tweepy
 
 This is my app. Yay! 
 
-## Twitter API
+### Twitter API
 Please add credentials to access Twitter API. 
 """
 

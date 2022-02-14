@@ -8,8 +8,8 @@ import tweepy
 
 This is my app. Yay! 
 
-## FAQ
-1. How does it work? 
+## Twitter API
+Please add credentials to access Twitter API. 
 """
 
 # Add session variables 

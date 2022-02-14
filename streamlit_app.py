@@ -91,15 +91,5 @@ if st.session_state.is_credential:
      st.session_state.tweet_text = text
 
      if st.button('Classify Tweet'):
-          st.write('test:', st.session_state.tweet_text)
-     
-       
-
-
-
-"""
-
-url = https://twitter.com/KimKardashian/status/1489401564284346369?s=20&t=nMf-OpIe73e8Gvnh--9kPA
-
-"""
+          st.write(st.session_state.tweet_text)
     

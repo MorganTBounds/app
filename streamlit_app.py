@@ -7,9 +7,6 @@ import tweepy
 # MY APP
 
 This is my app. Yay! 
-
-### Twitter API
-Please add credentials to access Twitter API. 
 """
 
 # Add session variables 

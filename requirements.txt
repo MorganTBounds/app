@@ -1,4 +1,3 @@
 tweepy
 pandas
-pickle 
 streamlit

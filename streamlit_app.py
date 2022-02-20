@@ -9,6 +9,10 @@ import tweepy
 This is my app. Yay! 
 """
 
+# Load model
+if 'model' not in st.session_state:
+     st.session_state.model = pickle.load(open('model.pickle', 'rb'))
+
 # Add session variables 
 if 'is_credential' not in st.session_state:
      st.session_state.is_credential = False

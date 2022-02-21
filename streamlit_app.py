@@ -101,5 +101,6 @@ if st.session_state.is_credential:
 
      if st.button('Classify Tweet'):
           pred = pd.DataFrame(clf.predict_proba([st.session_state.tweet_text]), columns=['Not Hateful', 'Hateful'])
-          st.pyplot(pred.plot.bar())
+          fig = pred.plot.bar()
+          st.pyplot(fig)
     

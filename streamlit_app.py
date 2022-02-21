@@ -1,7 +1,6 @@
 import streamlit as st
 import tweepy
 import pandas as pd
-import matplotlib.pyplot as plt 
 import pickle
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
@@ -102,6 +101,5 @@ if st.session_state.is_credential:
 
      if st.button('Classify Tweet'):
           pred = pd.DataFrame(clf.predict_proba([st.session_state.tweet_text]), columns=['Not Hateful', 'Hateful'])
-          fig = pred.plot.bar()
-          st.pyplot(fig)
+          st.bar_chart(pred)
     

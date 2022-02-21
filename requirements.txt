@@ -2,4 +2,4 @@ tweepy
 pandas
 streamlit
 sklearn
-matplotlib.pyplot
+matplotlib

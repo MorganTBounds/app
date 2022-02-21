@@ -106,6 +106,7 @@ if st.session_state.is_credential:
           plt.xticks(ticks=[0, 1], labels=["Not Hate", "Hate"])
           plt.text(0, pred[0], pred[0], ha='center')
           plt.text(1, pred[1], pred[1], ha='center')
-          fig = plt.bar(x=[0, 1], height=pred, color=['#75C29C', '#EE6666'])
+          plt.bar(x=[0, 1], height=pred, color=['#75C29C', '#EE6666'])
+          fig = plt.figure()
           st.pyplot(fig)
     

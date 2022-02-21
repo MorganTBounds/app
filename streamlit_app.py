@@ -102,12 +102,11 @@ if st.session_state.is_credential:
 
      if st.button('Classify Tweet'):
           pred = clf.predict_proba([st.session_state.tweet_text])[0]
-          fig = plt.figure()
+          fig = plt.figure(facecolor='#262730')
           plt.ylim(0,1)
           plt.xticks(ticks=[0, 1], labels=["Not Hate", "Hate"])
           plt.text(0, pred[0], pred[0], ha='center')
           plt.text(1, pred[1], pred[1], ha='center')
           plt.bar(x=[0, 1], height=pred, color=['#75C29C', '#EE6666'])
-          plt.figure(facecolor='#262730')
           st.pyplot(fig)
     

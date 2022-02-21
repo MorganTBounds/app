@@ -2,4 +2,3 @@ tweepy
 pandas
 streamlit
 sklearn
-pickle

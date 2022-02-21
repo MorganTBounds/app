@@ -15,10 +15,6 @@ from sklearn.model_selection import GridSearchCV
 This is my app. Yay! 
 """
 
-# Load model
-if 'model' not in st.session_state:
-     st.session_state.model = pickle.load(open('model.pickle', 'rb'))
-
 # Add session variables 
 if 'is_credential' not in st.session_state:
      st.session_state.is_credential = False
@@ -31,6 +27,9 @@ if 'private_token' not in st.session_state:
      
 if 'tweet_text' not in st.session_state:
      st.session_state.tweet_text = ''
+     
+# Load model
+clf = pickle.load(open('model.pickle', 'rb'))
 
 
 # Get public keys 

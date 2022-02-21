@@ -1,7 +1,12 @@
 import streamlit as st
-import pandas as pd
-import pickle
 import tweepy
+import pickle 
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+from sklearn.model_selection import GridSearchCV
+
 
 
 """

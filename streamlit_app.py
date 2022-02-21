@@ -101,7 +101,7 @@ if st.session_state.is_credential:
      st.session_state.tweet_text = text
 
      if st.button('Classify Tweet'):
-          pred = np.round(clf.predict_proba([st.session_state.tweet_text])[0], 2)
+          pred = clf.predict_proba([st.session_state.tweet_text])[0].round(2)
           fig = plt.figure()
           plt.style.use('dark_background')
           plt.ylim(0,1)

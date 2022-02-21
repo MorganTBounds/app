@@ -1,6 +1,5 @@
 import streamlit as st
 import tweepy
-import pickle 
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline

@@ -101,7 +101,7 @@ if st.session_state.is_credential:
      st.session_state.tweet_text = text
 
      if st.button('Classify Tweet'):
-          pred = clf.predict_proba([st.session_state.tweet_text]), columns=['Not Hateful', 'Hateful'])[0]
+          pred = clf.predict_proba([st.session_state.tweet_text])[0]
           plt.ylim(0,1)
           plt.xticks(ticks=[0, 1], labels=["Not Hate", "Hate"])
           plt.text(0, pred[0], pred[0], ha='center')

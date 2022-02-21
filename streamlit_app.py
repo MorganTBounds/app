@@ -2,6 +2,7 @@ import streamlit as st
 import tweepy
 import pandas as pd
 import pickle
+import matplotlib.pyplot as plt 
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
@@ -100,6 +101,11 @@ if st.session_state.is_credential:
      st.session_state.tweet_text = text
 
      if st.button('Classify Tweet'):
-          pred = pd.DataFrame(clf.predict_proba([st.session_state.tweet_text]), columns=['Not Hateful', 'Hateful'])
-          st.bar_chart(pred.T)
+          pred = clf.predict_proba([st.session_state.tweet_text]), columns=['Not Hateful', 'Hateful'])[0]
+          plt.ylim(0,1)
+          plt.xticks(ticks=[0, 1], labels=["Not Hate", "Hate"])
+          plt.text(0, pred[0], pred[0], ha='center')
+          plt.text(1, pred[1], pred[1], ha='center')
+          fig = plt.bar(x=[0, 1], height=pred, color=['#75C29C', '#EE6666'])
+          st.pyplot(fig)
     

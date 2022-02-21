@@ -11,9 +11,7 @@ from sklearn.model_selection import GridSearchCV
 
 
 """
-# MY APP
-
-This is my app. Yay! 
+# Twitter Hate Speech Detection 
 """
 
 # Add session variables 

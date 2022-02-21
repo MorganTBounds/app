@@ -108,5 +108,6 @@ if st.session_state.is_credential:
           plt.text(0, pred[0], pred[0], ha='center')
           plt.text(1, pred[1], pred[1], ha='center')
           plt.bar(x=[0, 1], height=pred, color=['#75C29C', '#EE6666'])
+          plt.figure(facecolor='#262730')
           st.pyplot(fig)
     

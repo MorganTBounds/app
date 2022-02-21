@@ -1,9 +1,5 @@
 tweepy
 pandas
 streamlit
-sklearn.linear_model.LogisticRegression
-sklearn.pipeline.Pipeline
-sklearn.feature_extraction.text.CountVectorizer
-sklearn.feature_extraction.text.TfidfTransformer
-sklearn.model_selection.GridSearchCV
-sklearn.metrics.classification_report
+sklearn
+pickle

@@ -101,5 +101,5 @@ if st.session_state.is_credential:
 
      if st.button('Classify Tweet'):
           pred = clf.predict_proba([st.session_state.tweet_text])
-          st.write(pred)
+          st.barchart(pred)
     

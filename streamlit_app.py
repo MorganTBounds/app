@@ -100,6 +100,6 @@ if st.session_state.is_credential:
      st.session_state.tweet_text = text
 
      if st.button('Classify Tweet'):
-          pred = clf.predict_proba([st.session_state.tweet_text])
+          pred = pd.DataFrame(clf.predict_proba([st.session_state.tweet_text]), columns=['Not Hateful', 'Hateful'])
           st.barchart(pred)
     

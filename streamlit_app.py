@@ -1,3 +1,4 @@
+# Import necessary libraries 
 import streamlit as st
 import tweepy
 import pandas as pd
@@ -99,7 +100,9 @@ if st.session_state.is_credential:
      st.session_state.tweet_text = text
 
      if st.button('Classify Tweet'):
+          # Get probabilistic model prediction
           pred = clf.predict_proba([st.session_state.tweet_text])[0].round(2)
+          # Plot model prediction as bar chart 
           fig = plt.figure()
           plt.style.use('dark_background')
           plt.ylim(0,1)

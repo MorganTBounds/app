@@ -1,6 +1,6 @@
 # Twitter Hate Speech Detector
 
-1. Welcome! To use the Twitter Hate Speech Detector, simply follow the link below:
+1. Welcome! To use the Twitter Hate Speech Detector, simply click the following link:
 https://share.streamlit.io/morgantbounds/app
 
 2. Next, enter the proper API credentials (available upon request), and hit "Submit". 

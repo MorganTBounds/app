@@ -7,6 +7,6 @@ https://share.streamlit.io/morgantbounds/app
 
 3. You may now enter the URL of a Tweet you would like to classify, and then click "Fetch Tweet". The text from the Tweet should now be displayed. 
 
-4. You may manually alter the text of the tweet, or enter your own. NOTE: All text must be under 280 characters. 
+4. You may manually alter the text from the Tweet, or enter your own (must be under 280 characters). 
 
-5. When you are ready for the model to classify the text inside the tweet box, press "Classify Tweet". 
+5. When you are ready for the model to classify the text inside the Tweet box, click "Classify Tweet". A bar chart will appear with the model's probabilistic prediction of the Tweet being "Not Hate" vs "Hate". 
